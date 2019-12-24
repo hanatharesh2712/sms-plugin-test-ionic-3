@@ -5,13 +5,27 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+    <ion-card>
+
+        <ion-card-header>
+            Get App Hash and recieve SMS in App
+        </ion-card-header>
+      
+        <ion-card-content>
+            <p>To read SMS which you send, First you have to click on "Get App Hash" button to get the app hash code and save
+                it somewhere. It will be needed when you send SMS.
+                Once you have app hash code, You can click on "Start Wathching SMS" and send a SMS from your emulator. </p>
+        
+              <code>
+                  SMS format should be: <#> Your ExampleApp code is: 123456 YOUR_APP_HASH_CODE_HERE
+                </code>
+                <button color="primary" (click)="getHashCode()" small>Get App Hash</button>
+                <button color="secondary" (click)="getSMS()" small>Start Watching SMS</button>
+                <ion-note color="primary">{{appHashString}}</ion-note>
+                <br>
+                <ion-note>{{smsTextmessage}}</ion-note>
+        </ion-card-content>
+      
+      </ion-card>
+
 </ion-content>

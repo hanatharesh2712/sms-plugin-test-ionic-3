@@ -1,5 +1,7 @@
 {
   "name": "sms-plugin-test-ionic-3",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }
