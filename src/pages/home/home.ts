@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { SmsRetriever } from '@ionic-native/sms-retriever/ngx';
-var smsRetriever = window['cordova']['plugins']['smsRetriever'];
+import { NavController, Platform } from 'ionic-angular';
+declare var window;
 
 @Component({
   selector: 'page-home',
@@ -11,26 +10,32 @@ export class HomePage {
   public smsTextmessage: string = '';
   public appHashString: string = '';
 
-  constructor(public navCtrl: NavController, private smsRetriever: SmsRetriever) {
+  constructor(public navCtrl: NavController, public platform: Platform) {
 
   }
+
   getHashCode() {
-    smsRetriever['getAppHash']((res) => {
-      this.appHashString = res;
-      console.log(res);
-    }, (err) => {
-      console.warn(err);
+    if (this.platform.ready()) {
+      const smsRetriever: any = window.cordova.plugins.smsRetriever;
+      smsRetriever['getAppHash']((res) => {
+        this.appHashString = res;
+        console.log(res);
+      }, (err) => {
+        console.warn(err);
+      });
     }
-    );
+
   }
 
   getSMS() {
-    smsRetriever['startWatching']((res) => {
-      this.smsTextmessage = res.Message;
-      console.log(res);
-    }, (err) => {
-      console.warn(err);
+    if (this.platform.ready()) {
+      const smsRetriever: any = window.cordova.plugins.smsRetriever;
+      smsRetriever['startWatching']((res) => {
+        this.smsTextmessage = res.Message;
+        console.log(res);
+      }, (err) => {
+        console.warn(err);
+      });
     }
-    );
   }
 }

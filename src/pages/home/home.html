@@ -11,7 +11,7 @@
             Get App Hash and recieve SMS in App
         </ion-card-header>
       
-        <ion-card-content>
+        <ion-card-content> 
             <p>To read SMS which you send, First you have to click on "Get App Hash" button to get the app hash code and save
                 it somewhere. It will be needed when you send SMS.
                 Once you have app hash code, You can click on "Start Wathching SMS" and send a SMS from your emulator. </p>
@@ -19,11 +19,12 @@
               <code>
                   SMS format should be: <#> Your ExampleApp code is: 123456 YOUR_APP_HASH_CODE_HERE
                 </code>
-                <button color="primary" (click)="getHashCode()" small>Get App Hash</button>
-                <button color="secondary" (click)="getSMS()" small>Start Watching SMS</button>
+                <button ion-button block color="primary" (click)="getHashCode()">Get App Hash</button>
+                <button ion-button block color="secondary" (click)="getSMS()">Start Watching SMS</button>
                 <ion-note color="primary">{{appHashString}}</ion-note>
                 <br>
                 <ion-note>{{smsTextmessage}}</ion-note>
+                
         </ion-card-content>
       
       </ion-card>
